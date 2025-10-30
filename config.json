@@ -1,0 +1,46 @@
+{
+  "system": {
+    "camera_index": 0,
+    "detection_confidence": 0.5,
+    "tracking_confidence": 0.5,
+    "fps_limit": 30
+  },
+  "alerts": {
+    "tts_enabled": true,
+    "sms_enabled": false,
+    "dashboard_enabled": true,
+    "iot_enabled": false,
+    "fall_alert_cooldown": 30,
+    "help_alert_cooldown": 10
+  },
+  "sms": {
+    "emergency_contacts": [
+      "+1234567890"
+    ],
+    "twilio_account_sid": "",
+    "twilio_auth_token": "",
+    "twilio_phone_number": ""
+  },
+  "dashboard": {
+    "host": "127.0.0.1",
+    "port": 5000,
+    "debug": false
+  },
+  "gestures": {
+    "wave_threshold": 0.12,
+    "wave_min_changes": 2,
+    "fall_shoulder_threshold": 0.05,
+    "fall_angle_threshold": 70,
+    "walking_ankle_threshold": 0.03,
+    "walking_angle_threshold": 5
+  },
+  "custom_gestures": {
+    "enabled": true,
+    "gestures": []
+  },
+  "logging": {
+    "enabled": true,
+    "log_file": "activity_log.json",
+    "max_log_size_mb": 50
+  }
+}

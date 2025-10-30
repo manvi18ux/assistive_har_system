@@ -1,0 +1,27 @@
+﻿# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+.venv/
+.Python
+build/
+dist/
+*.egg-info/
+# Virtual environment folders
+venv/
+env/
+# VSCode
+.vscode/
+# OS
+.DS_Store
+Thumbs.db
+# Logs and databases
+*.log
+*.sqlite3
+# Large models and data
+models/
+*.tflite

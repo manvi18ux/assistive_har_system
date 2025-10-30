@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Guardian - Intelligent Health Monitoring System</title>
+    
+    <!-- Chart.js for beautiful charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-shield-heart"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>AI Guardian</h1>
+                    <p>Intelligent Health Monitoring System</p>
+                </div>
+            </div>
+            
+            <div class="header-stats">
+                <div class="header-stat">
+                    <div class="header-stat-value" id="headerUptime">99.9%</div>
+                    <div class="header-stat-label">Uptime</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value" id="headerAlerts">0</div>
+                    <div class="header-stat-label">Active Alerts</div>
+                </div>
+                <div class="header-stat">
+                    <div class="header-stat-value" id="headerStatus">
+                        <i class="fas fa-circle" style="color: #10b981;"></i> Live
+                    </div>
+                    <div class="header-stat-label">System Status</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Emergency Alert -->
+        <div class="emergency-alert" id="emergencyAlert">
+            <div class="emergency-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="emergency-text">
+                EMERGENCY: Fall Detected - Immediate Assistance Required!
+            </div>
+        </div>
+        
+        <!-- Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Current Activity Monitor -->
+            <div class="card activity-monitor">
+                <div class="current-activity" id="currentActivity">STANDING</div>
+                <div class="activity-duration" id="activityDuration">Duration: 0m 0s</div>
+                <div class="activity-icon" id="activityIcon">
+                    <i class="fas fa-walking"></i>
+                </div>
+            </div>
+            
+            <!-- Health Score -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        Health Score
+                    </div>
+                </div>
+                <div class="health-score-container">
+                    <div class="health-score-circle">
+                        <svg width="200" height="200" class="health-score-svg">
+                            <defs>
+                                <linearGradient id="healthGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="100" cy="100" r="90" class="health-score-bg"></circle>
+                            <circle cx="100" cy="100" r="90" class="health-score-progress" id="healthProgress"></circle>
+                        </svg>
+                        <div class="health-score-text">
+                            <div class="health-score-value" id="healthScore">85</div>
+                            <div class="health-score-label">Health Score</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Activity Statistics -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        Activity Statistics
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-card-icon">🪑</div>
+                        <div class="stat-card-value" id="sittingTime">0m</div>
+                        <div class="stat-card-label">Sitting Today</div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-down"></i> 15% better
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">🚶</div>
+                        <div class="stat-card-value" id="walkingTime">0m</div>
+                        <div class="stat-card-label">Walking Today</div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-arrow-up"></i> 20% more
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">⚠️</div>
+                        <div class="stat-card-value" id="fallCount">0</div>
+                        <div class="stat-card-label">Falls Detected</div>
+                        <div class="stat-card-change positive">
+                            <i class="fas fa-check-circle"></i> Safe
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-icon">💊</div>
+                        <div class="stat-card-value" id="warningCount">0</div>
+                        <div class="stat-card-label">Health Warnings</div>
+                        <div class="stat-card-change" id="warningChange">
+                            <i class="fas fa-info-circle"></i> Monitoring
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Real-time Alerts -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        Real-time Alerts
+                    </div>
+                    <div class="loading" id="alertLoading"></div>
+                </div>
+                <div class="alert-list" id="alertList">
+                    <!-- Alerts will be dynamically added here -->
+                </div>
+            </div>
+            
+            <!-- Activity Trend Chart -->
+            <div class="card card-large">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-area"></i>
+                        </div>
+                        24-Hour Activity Trend
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="activityChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Risk Assessment -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <div class="card-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        Risk Assessment
+                    </div>
+                </div>
+                <div class="risk-meters">
+                    <div class="risk-meter">
+                        <div class="risk-label">Fall Risk</div>
+                        <div class="risk-bar">
+                            <div class="risk-fill" id="fallRisk" style="width: 20%; background: var(--success);"></div>
+                        </div>
+                        <div class="risk-value">Low</div>
+                    </div>
+                    <div class="risk-meter">
+                        <div class="risk-label">Inactivity Risk</div>
+                        <div class="risk-bar">
+                            <div class="risk-fill" id="inactivityRisk" style="width: 40%; background: var(--warning);"></div>
+                        </div>
+                        <div class="risk-value">Medium</div>
+                    </div>
+                    <div class="risk-meter">
+                        <div class="risk-label">Health Risk</div>
+                        <div class="risk-bar">
+                            <div class="risk-fill" id="healthRisk" style="width: 15%; background: var(--success);"></div>
+                        </div>
+                        <div class="risk-value">Low</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+    
+    <!-- External JavaScript -->
+    <script src="/static/dashboard.js"></script>
+</body>
+</html>

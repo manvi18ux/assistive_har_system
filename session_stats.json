@@ -1,0 +1,15 @@
+{
+  "falls_detected": 10,
+  "help_requests": 16,
+  "total_gestures": 828,
+  "session_start": "2025-10-29 12:06:16.019342",
+  "session_end": "2025-10-29 12:37:31.642145",
+  "activity_durations": {
+    "total_sitting_minutes": 2.27,
+    "total_standing_minutes": 27.98,
+    "total_walking_minutes": 0.0,
+    "longest_sitting_minutes": 0.16,
+    "longest_standing_minutes": 1.68,
+    "health_warnings_issued": 1
+  }
+}
