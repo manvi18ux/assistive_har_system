@@ -43,9 +43,7 @@ Quick start (short)
 2. Start detector: `python gesture_holistic.py`
 3. Start dashboard: `python dashboard.py` and open `http://127.0.0.1:5000`
 
-If you want me to remove SMS-specific code files (for example `sms_alert.py`) or fully delete references,
-I can do that next. Otherwise I've kept SMS configuration and files in the repo but omitted them from the
-About/README content as requested.
+
 
 ````
 python -m venv venv
